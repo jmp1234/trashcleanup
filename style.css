@@ -10,26 +10,35 @@
 
 html {
     font-size: 62.5%;
+    height: 100vh;
+    overflow: hidden;
 }
 
 body {
     font-size: 14px;
     font-size: 1.4rem; /* =14px */
     margin: 0;
+    background-color: lightsteelblue;
 }
 
 h1 {
     font-size: 24px;
-    font-size: 2.4rem; /* =24px */
+    font-size: 2.4rem;
+    /* =24px */
 }
 
 /*News Headline Ticker*/
 @keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
-#newsHeadlines{
+#newsHeadlines {
     width: 100%;
     overflow: hidden;
 }
@@ -46,11 +55,11 @@ h1 {
     animation: ticker 90s infinite linear;
 }
 
-.tickerAnimation:hover{
+.tickerAnimation:hover {
     animation-play-state: paused;
 }
 
-.tickerItem{
+.tickerItem {
     display: inline-block;
     padding: 0 3rem;
     font-size: 2rem;
@@ -67,6 +76,7 @@ h1 {
     font-family: "Segoe", Tahoma, sans-serif;
     color: white;
     padding: 2% 20%;
+    border-radius: 15px;
 }
 
 #widgetCity {
@@ -83,12 +93,21 @@ h1 {
     text-transform: capitalize;
 }
 
-/*Map*/
-#map {
-  position:absolute;
-  top:0;
-  left: 50%;
-  transform: translateX(-50%);
-  width:80vw;
-  height: 60vh;
+
+/* Map */
+
+.mapContainer {
+    position: relative;
+    height: 80vh;
+    width: 90%;
+    translate: (-50px, -50px);
+    left: 5%;
+    margin-top: 2%;
+    background-color: whitesmoke;
+}
+
+/* Modal */
+
+.modal a.close-modal{
+    background-image: none;
 }
