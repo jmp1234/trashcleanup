@@ -1,14 +1,16 @@
 /*news api*/
 
 class News {
-    constructor(){
-        this.news = [];
+    constructor(displayArea){
+        this.displayArea = displayArea;
+        this.newsArticles = [];
+        this.headlineDomElement = null;
 
         this.getNewsSuccess = this.getNewsSuccess.bind(this);
         this.serverError = this.serverError.bind(this);
-
-        this.getNews(); //need to call news request... in mainpage.js?
+        this.getNews();
     }
+
     getNews(){
         $.ajax({
             url: 'https://newsapi.org/v2/everything',
@@ -17,8 +19,8 @@ class News {
             data: {
                 apiKey: 'afebec8e4c394293bae38bba564a909c',
                 q: 'plastic ocean',
-                from: '2019-02-19', //find current date minus one month
                 sortBy: 'relevancy',
+                language: 'en'
             },
             success: this.getNewsSuccess,
             error: this.serverError
@@ -36,8 +38,10 @@ class News {
                 filteredArticle.source = articlesInfo.source.name;
                 filteredArticle.url = articlesInfo.url;
                 filteredArticle.description = articlesInfo.description;
-                this.news.push(filteredArticle);
+                this.newsArticles.push(filteredArticle);
             }
+            const headlineDomElement = this.renderHeadline();
+            this.displayArea.append(headlineDomElement);
         } else {
             console.log('request/timeout error')
         }
@@ -46,6 +50,19 @@ class News {
     serverError(){
         //modal or indication of server error
         console.log('server error')
+    }
+
+    renderHeadline(){
+        const tickerWrap = $("<div>", {'class': 'tickerWrap'});
+        const tickerAnimation = $("<div>", {'class': 'tickerAnimation'});
+        for(let index = 0; index < this.newsArticles.length; index++){
+            const tickerItem = $("<div>", {'class': 'tickerItem'}).text(this.newsArticles[index].title);
+            //tickerItem.on('click', )
+            tickerAnimation.append(tickerItem);
+        }
+        tickerWrap.append(tickerAnimation);
+        this.headlineDomElement = tickerWrap;
+        return this.headlineDomElement;
     }
 
 }

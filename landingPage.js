@@ -4,20 +4,15 @@ class LandingPage{
             news: displayOptions.news
         };
         /*instantiate child classes*/
-        this.news = null;
-
+        this.news = new News(this.displayArea.news);
+        console.log(this.news.newsArticles);
 
         this.startApp();
     }
+
     startApp(){
-        this.relevantNews();
+        debugger;
+        //this.displayArea.news.append(this.news.headlineDomElement);
     }
-    relevantNews(){
-        this.news = new News();
-
-    }
-
-
-
 
 }
