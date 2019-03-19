@@ -14,8 +14,7 @@ html {
 
 body {
     font-size: 14px;
-    font-size: 1.4rem;
-    /* =14px */
+    font-size: 1.4rem; /* =14px */
     margin: 0;
 }
 
@@ -58,7 +57,6 @@ h1 {
 }
 
 /*Weather*/
-
 .weatherWidgetContainer {
     display: flex;
     justify-content: space-evenly;
@@ -83,4 +81,14 @@ h1 {
 
 #widgetTempDesc {
     text-transform: capitalize;
+}
+
+/*Map*/
+#map {
+  position:absolute;
+  top:0;
+  left: 50%;
+  transform: translateX(-50%);
+  width:80vw;
+  height: 60vh;
 }
