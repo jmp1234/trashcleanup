@@ -11,7 +11,7 @@ class LandingPage{
     }
 
     startApp(){
-        debugger;
+        // debugger;
         //this.displayArea.news.append(this.news.headlineDomElement);
     }
 
