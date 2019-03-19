@@ -2,6 +2,7 @@
 $(document).ready(initializeApp);
 
 var landingPage = null;
+const weatherVariable = null;
 
 function initializeApp(){
     var displayOptions = {
@@ -9,5 +10,10 @@ function initializeApp(){
 
     };
     landingPage = new LandingPage(displayOptions);
-    const weatherVariable = new Weather();
+    weatherVariable = new Weather();
+
+    $("#custom-close").modal({
+        closeClass: 'icon-remove',
+        closeText: '!'
+    });
 }

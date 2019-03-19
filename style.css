@@ -78,6 +78,7 @@ h1 {
     font-family: "Segoe", Tahoma, sans-serif;
     color: white;
     padding: 2% 20%;
+    border-radius: 15px;
 }
 
 #widgetCity {
@@ -104,4 +105,10 @@ h1 {
     left: 5%;
     margin-top: 2%;
     background-color: whitesmoke;
+}
+
+/* Modal */
+
+.modal a.close-modal{
+    background-image: none;
 }
