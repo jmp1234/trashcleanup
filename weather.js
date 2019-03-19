@@ -1,9 +1,8 @@
 class Weather {
     constructor() {
-
         this.getWeatherData = this.getWeatherData.bind(this);
 
-        this.getWeatherData(33.66, -117.82);
+        this.getWeatherData(33.66, -117.82); //currently set for Irvine, figure out how to do this on each map icon click
     }
 
     getWeatherData(lat, lon) {
@@ -23,15 +22,19 @@ class Weather {
             success: function (data) {
                 console.log('we got data!', data);
 
-                console.log('city name: ', data.name);
-                console.log('latitude: ', data.coord.lat);
-                console.log('longitude: ', data.coord.lon);
-                console.log('current temperature: ', data.main.temp.toFixed(0)); //removes the decimals
-                console.log(`temperature range: ${(data.main.temp_min).toFixed(0)}-${(data.main.temp_max).toFixed(0)}`);
-                console.log('weather description: ', data.weather[0].description);
+                let weatherData = {
+                    'city name': data.name,
+                    'latitude': data.coord.lat,
+                    'longitude': data.coord.lon,
+                    'current temperature': data.main.temp.toFixed(0),
+                    'temperature range': `${(data.main.temp_min).toFixed(0)}-${(data.main.temp_max).toFixed(0)}`,
+                    'weather description': data.weather[0].description
+                }
+
+                console.log(weatherData);
             },
             error: function () {
-                console.log('something went wrong!');
+                console.log('something went wrong getting weather data');
             }
         });
     }
