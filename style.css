@@ -1,13 +1,25 @@
+@font-face {
+    font-family: "Segoe";
+    src: url(fonts/Segoe\ UI.woff);
+}
+
+@font-face {
+    font-family: "Segoe Bold";
+    src: url(fonts/Segoe\ UI\ Bold.woff);
+}
+
 html {
     font-size: 62.5%;
-} 
+}
 
 body {
     font-size: 14px;
-    font-size: 1.4rem; /* =14px */
-} 
+    font-size: 1.4rem;
+    /* =14px */
+    margin: 0;
+}
 
-h1   {
+h1 {
     font-size: 24px;
     font-size: 2.4rem; /* =24px */
 }
@@ -43,4 +55,32 @@ h1   {
     display: inline-block;
     padding: 0 3rem;
     font-size: 2rem;
+}
+
+/*Weather*/
+
+.weatherWidgetContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    height: 6rem;
+    background-color: rgb(31, 86, 124);
+    font-family: "Segoe", Tahoma, sans-serif;
+    color: white;
+    padding: 2% 20%;
+}
+
+#widgetCity {
+    font-family: "Segoe Bold";
+    text-transform: uppercase;
+}
+
+#widgetTemp {
+    font-family: "Segoe Bold";
+    font-weight: 600;
+}
+
+#widgetTempDesc {
+    text-transform: capitalize;
 }
