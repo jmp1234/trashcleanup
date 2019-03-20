@@ -20,6 +20,36 @@ class LandingPage{
         }.bind(this));
     }
 
+    aboutPageBorderEffects(){
+        document.querySelector('.profileImgJen').onmousemove = (e) => {
+
+            let x = e.pageX - e.target.offsetLeft
+            let y = e.pageY - e.target.offsetTop
+        
+            e.target.style.setProperty('--x', `${ x }px`)
+            e.target.style.setProperty('--y', `${ y }px`)
+            
+        };
+        document.querySelector('.profileImgJohnny').onmousemove = (e) => {
+
+            let x = e.pageX - e.target.offsetLeft
+            let y = e.pageY - e.target.offsetTop
+        
+            e.target.style.setProperty('--x', `${ x }px`)
+            e.target.style.setProperty('--y', `${ y }px`)
+            
+        }
+        document.querySelector('.profileImgMichelle').onmousemove = (e) => {
+
+            let x = e.pageX - e.target.offsetLeft
+            let y = e.pageY - e.target.offsetTop
+        
+            e.target.style.setProperty('--x', `${ x }px`)
+            e.target.style.setProperty('--y', `${ y }px`)
+            
+        }
+    }
+
     createMapAndMarkers(eventLocations){
         const locations = eventLocations;
 

@@ -6,4 +6,5 @@ function initializeApp() {
     landingPage = new LandingPage();
     landingPage.addClassToSidebarButton();
     landingPage.toggleSidebar();
+    landingPage.aboutPageBorderEffects();
 }
