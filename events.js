@@ -24,7 +24,6 @@ class BeachCleanup {
   }
 
   retrieveLocationsSuccess(response){
-    debugger;
     if(response) {
       console.log(response);
       const orangeCounty = response.filter(beachCleanup => /orange/gi.test(beachCleanup['county_region'])
