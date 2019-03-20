@@ -121,6 +121,15 @@ h1 {
 .modal a.close-modal{
     background-image: none;
 }
+#mapModal {
+  text-align: center;
+  background-color: lightcyan;
+  border: 2px solid black;
+}
+
+.weatherWidgetContainer {
+  border: 1px solid black;
+}
 
 .modalcenter {
   position: absolute;
@@ -128,8 +137,9 @@ h1 {
   top: 0;
 }
 
+
 .organization {
-  font-size: 2rem;
+  font-size: 2.5rem;
   padding-top: 2%;
-  margin-bottom: 0;
+  font-weight: bold;
 }
