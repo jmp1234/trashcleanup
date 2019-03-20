@@ -92,3 +92,13 @@ h1 {
   width:80vw;
   height: 60vh;
 }
+
+.marker {
+    width: 30px;
+    height: 30px;
+    display: block;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+}

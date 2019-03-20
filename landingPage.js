@@ -6,32 +6,80 @@ class LandingPage{
         };
         /*instantiate child classes*/
         this.news = new News(this.displayArea.news);
-        console.log(this.news.newsArticles);
-        this.locations = null;
         this.map = null;
+        this.events = new BeachCleanup(this.createMapAndMarkers);
+
         this.weatherVariable = new Weather();
 
-        this.startApp();
+        this.createMapAndMarkers = this.createMapAndMarkers.bind(this);
 
     }
-    startApp(){
-        this.addBeachCleanups();
-        // debugger;
-        //this.displayArea.news.append(this.news.headlineDomElement);
-    }
-    addBeachCleanups() {
-        var beaches = new BeachCleanup();
-        this.locations = beaches.beachCleanupLocations;
-    }
 
-    createMap() {
-      this.map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/mapbox/streets-v9',
-          center: [-117.956556, 33.630271],
-          zoom: 10
-      });
-    }
+    createMapAndMarkers(eventLocations){
+        debugger;
+        const locations = eventLocations; //locationArray
 
+        mapboxgl.accessToken = 'pk.eyJ1IjoiamVuLWwiLCJhIjoiY2p0ZmR2bm8zMDJ4bDN5cGp2ZDk1cmhweCJ9.P0S6-ZdkFBaOaw0V0Q868A';
+        this.map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9',
+            center: [-117.956556, 33.630271],
+            zoom: 10
+        });
+
+        var features = locations.map(location => ({
+            'type': 'Feature',
+            'properties': {
+                'message': 'location.organization',
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [location.longitude, location.latitude],
+            }
+        }));
+
+        var geojson = {
+            'type': 'FeatureCollection',
+            'features': features,
+        };
+
+        // add markers to map
+        geojson.features.forEach(marker => {
+            debugger;
+            // create a DOM element for the marker
+            var mark = document.createElement('div');
+            mark.className = 'marker';
+            mark.style.backgroundImage = 'url(https://placekitten.com/g/30/30/)';
+
+            mark.addEventListener('click', function() {
+                window.alert(marker.properties.message);
+            });
+
+
+            // add marker to map
+            new mapboxgl.Marker(mark)
+                .setLngLat(marker.geometry.coordinates)
+                .addTo(this.map);
+        });
+
+        // locations.forEach((marker) => {
+        //     debugger;
+        //     const mark = $("<div>", {
+        //         'class': 'marker',
+        //         'style': {
+        //             'background-image': 'url("images/conservation.png")',
+        //             'width': '30px',
+        //             'height': '30px'
+        //         }
+        //     });
+        //     mark.on('click', function() {
+        //         console.log('need marker modal');
+        //     });
+        //
+        //     new mapboxgl.Marker(mark)
+        //         .setLngLat([marker.longitude, marker.latitude])
+        //         .addTo(this.map);
+        // });
+    }
 
 }

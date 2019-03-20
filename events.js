@@ -1,42 +1,47 @@
 class BeachCleanup {
-  constructor() {
+  constructor(createMapCallback) {
+    this.callback = createMapCallback;
     this.beachCleanupLocations = null;
+    this.retrieveLocationsSuccess = this.retrieveLocationsSuccess.bind(this);
     this.retrieveLocations();
+
   }
 
   retrieveLocations() {
-    var beachEvent = this;
     var ajaxOptions = {
       url: 'https://api.coastal.ca.gov/ccd/v1/locations',
       method: 'get',
       dataType: 'json',
-      success: function(response) {
-        if(response) {
-          console.log(response);
-          const orangeCounty = response.filter(beachCleanup => /orange/gi.test(beachCleanup['county_region'])
-          && beachCleanup['website'] && beachCleanup['organization']
-          && beachCleanup['latitude'] > 33.509190 && beachCleanup['latitude'] < 33.704753)
-            .sort((eventX, eventY) => eventX.latitude - eventY.latitude) //show locations between laguna and huntington
-            //organize each location by website, organization, latitude, longitude
-            .map(location => ({'location': location.website,
-                                'organization': location.organization,
-                                'latitude': location.latitude,
-                                'longitude': location.longitude}));
-          console.log(orangeCounty)
-          beachEvent.beachCleanupLocations = orangeCounty;
-          return true;
-        } else {
-        console.log('error with your function')
-        }
-      },
+      success: this.retrieveLocationsSuccess,
       error: function(response) {
         console.log('error in connecting to ajax! error 500')
       },
       complete: function() {
         console.log('completed')
       }
-
-    }
+    };
     $.ajax(ajaxOptions);
+  }
+
+  retrieveLocationsSuccess(response){
+    debugger;
+    if(response) {
+      console.log(response);
+      const orangeCounty = response.filter(beachCleanup => /orange/gi.test(beachCleanup['county_region'])
+          && beachCleanup['website'] && beachCleanup['organization']
+          && beachCleanup['latitude'] > 33.509190 && beachCleanup['latitude'] < 33.704753)
+          .sort((eventX, eventY) => eventX.latitude - eventY.latitude) //show locations between laguna and huntington
+          //organize each location by website, organization, latitude, longitude
+          .map(location => ({'location': location.website,
+            'organization': location.organization,
+            'latitude': location.latitude,
+            'longitude': location.longitude}));
+      console.log(orangeCounty);
+      this.beachCleanupLocations = orangeCounty;
+      this.callback(this.beachCleanupLocations);
+      return true;
+    } else {
+      console.log('error with your function')
+    }
   }
 }
