@@ -7,17 +7,17 @@ class LandingPage{
         /*instantiate child classes*/
         this.news = new News(this.displayArea.news);
         this.map = null;
+        this.createMapAndMarkers = this.createMapAndMarkers.bind(this);
         this.events = new BeachCleanup(this.createMapAndMarkers);
 
         this.weatherVariable = new Weather();
 
-        this.createMapAndMarkers = this.createMapAndMarkers.bind(this);
 
     }
 
     createMapAndMarkers(eventLocations){
         const locations = eventLocations; //locationArray
-
+        console.log('we:',this.weatherVariable)
         mapboxgl.accessToken = 'pk.eyJ1IjoiamVuLWwiLCJhIjoiY2p0ZmR2bm8zMDJ4bDN5cGp2ZDk1cmhweCJ9.P0S6-ZdkFBaOaw0V0Q868A';
         this.map = new mapboxgl.Map({
             container: 'map',
@@ -34,8 +34,15 @@ class LandingPage{
             mark.style.backgroundImage = 'url(images/map_marker.png)';
 
             mark.addEventListener('click', function() {
-                //window.alert(marker.properties.message);
-            });
+              $("#widgetIcon").children().remove();
+              this.weatherVariable.getWeatherData(marker.latitude, marker.longitude);
+              $('.organization').text(marker.organization);
+              $('.website').attr({'href': marker.website,
+                                      'target': '_blank',
+                                    });
+              $('.website').text(marker.website)
+              $('#mapModal').modal('show');
+            }.bind(this));
 
             // add marker to map
             new mapboxgl.Marker(mark)

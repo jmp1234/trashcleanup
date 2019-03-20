@@ -24,7 +24,6 @@ class BeachCleanup {
   }
 
   retrieveLocationsSuccess(response){
-    debugger;
     if(response) {
       console.log(response);
       const orangeCounty = response.filter(beachCleanup => /orange/gi.test(beachCleanup['county_region'])
@@ -33,7 +32,7 @@ class BeachCleanup {
           && beachCleanup['longitude'] <= -117.701)
           .sort((eventX, eventY) => eventX.latitude - eventY.latitude) //show locations between laguna and huntington
           //organize each location by website, organization, latitude, longitude
-          .map(location => ({'location': location.website,
+          .map(location => ({'website': location.website,
             'organization': location.organization,
             'latitude': location.latitude,
             'longitude': location.longitude}));
