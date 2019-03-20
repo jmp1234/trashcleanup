@@ -26,7 +26,8 @@ class LandingPage{
             container: 'map',
             style: 'mapbox://styles/mapbox/streets-v9',
             center: [-117.956556, 33.630271],
-            zoom: 10
+            zoom: 10,
+            minZoom: 10
         });
 
         // add markers to map
@@ -44,7 +45,11 @@ class LandingPage{
                                       'target': '_blank',
                                     });
               $('.website').text(marker.website)
-              $('#mapModal').modal('show');
+              // $('#mapModal').modal('show');
+              $('#mapModal').modal({
+                fadeDuration: 100,
+                show: true,
+              })
             }.bind(this));
 
             new mapboxgl.Marker(mark)
