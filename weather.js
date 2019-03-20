@@ -3,7 +3,7 @@ class Weather {
         this.getWeatherData = this.getWeatherData.bind(this);
         this.sendDataToWidget = this.sendDataToWidget.bind(this);
 
-        this.getWeatherData(33.66, -117.82); //currently set for Irvine, figure out how to do this on each map icon click
+        // this.getWeatherData(33.66, -117.82); //currently set for Irvine, figure out how to do this on each map icon click
     }
 
     getWeatherData(lat, lon) {
@@ -16,7 +16,7 @@ class Weather {
             method: 'get',
             data: {
                 APPID: '3b66653d29e493f25f6edb9f07bd2ba9',
-                lat: this.lat, 
+                lat: this.lat,
                 lon: this.lon,
                 units: 'imperial',
             },

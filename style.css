@@ -121,3 +121,15 @@ h1 {
 .modal a.close-modal{
     background-image: none;
 }
+
+.modalcenter {
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+
+.organization {
+  font-size: 2rem;
+  padding-top: 2%;
+  margin-bottom: 0;
+}
