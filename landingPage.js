@@ -21,7 +21,6 @@ class LandingPage{
 
         const locations = eventLocations;
 
-
         mapboxgl.accessToken = 'pk.eyJ1IjoiamVuLWwiLCJhIjoiY2p0ZmR2bm8zMDJ4bDN5cGp2ZDk1cmhweCJ9.P0S6-ZdkFBaOaw0V0Q868A';
           this.map = new mapboxgl.Map({
                 container: 'map',

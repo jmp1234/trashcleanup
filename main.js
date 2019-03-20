@@ -10,7 +10,4 @@ function initializeApp(){
 
     landingPage = new LandingPage(displayOptions);
 
-
-
-
 }
