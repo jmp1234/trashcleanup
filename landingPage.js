@@ -1,8 +1,12 @@
+/**
+ * Main Landing Page, instantiate classes
+ * @jQuery selector - element targets for display
+ */
+
 class LandingPage{
     constructor(displayOptions){
         this.displayArea = {
             news: displayOptions.news,
-            //map: displayOptions.map,
         };
         /*instantiate child classes*/
         this.news = new News(this.displayArea.news);
@@ -16,7 +20,7 @@ class LandingPage{
     }
 
     createMapAndMarkers(eventLocations){
-        const locations = eventLocations; //locationArray
+        const locations = eventLocations;
 
         mapboxgl.accessToken = 'pk.eyJ1IjoiamVuLWwiLCJhIjoiY2p0ZmR2bm8zMDJ4bDN5cGp2ZDk1cmhweCJ9.P0S6-ZdkFBaOaw0V0Q868A';
         this.map = new mapboxgl.Map({
@@ -37,30 +41,10 @@ class LandingPage{
                 //window.alert(marker.properties.message);
             });
 
-            // add marker to map
             new mapboxgl.Marker(mark)
                 .setLngLat([marker.longitude, marker.latitude])
                 .addTo(this.map);
         });
-
-        // locations.forEach((marker) => {
-        //     debugger;
-        //     const mark = $("<div>", {
-        //         'class': 'marker',
-        //         'style': {
-        //             'background-image': 'url("images/conservation.png")',
-        //             'width': '30px',
-        //             'height': '30px'
-        //         }
-        //     });
-        //     mark.on('click', function() {
-        //         console.log('need marker modal');
-        //     });
-        //
-        //     new mapboxgl.Marker(mark)
-        //         .setLngLat([marker.longitude, marker.latitude])
-        //         .addTo(this.map);
-        // });
     }
 
 }

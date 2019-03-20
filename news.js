@@ -1,4 +1,8 @@
-/*news api*/
+/**
+ * Generates news headlines related to ocean pollution
+ * @class
+ * @jQuery selector - element target to append news headlines
+ */
 
 class News {
     constructor(displayArea){
@@ -50,8 +54,7 @@ class News {
     }
 
     serverError(){
-        //modal or indication of server error
-        console.log('Failed to connect to the Server')
+        console.log('Failed to connect to the Server for news')
     }
 
     renderHeadline(){
