@@ -7,10 +7,13 @@ function initializeApp(){
     var displayOptions = {
         news: $("#newsHeadlines"),
 
+
     };
-    landingPage = new LandingPage(displayOptions);
 
     
+    landingPage = new LandingPage(displayOptions);
+
+
 
 
 }
