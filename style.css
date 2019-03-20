@@ -100,10 +100,14 @@ h1 {
     position: relative;
     height: 80vh;
     width: 90%;
-    translate: (-50px, -50px);
     left: 5%;
     margin-top: 2%;
     background-color: whitesmoke;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
 }
 
 /* Modal */

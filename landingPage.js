@@ -49,7 +49,7 @@ class LandingPage{
             // create a DOM element for the marker
             var mark = document.createElement('div');
             mark.className = 'marker';
-            mark.style.backgroundImage = 'url(https://placekitten.com/g/30/30/)';
+            mark.style.backgroundImage = 'url(images/map_marker.png)';
 
             mark.addEventListener('click', function() {
                 window.alert(marker.properties.message);
