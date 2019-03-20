@@ -2,7 +2,7 @@ class LandingPage{
     constructor(displayOptions){
         this.displayArea = {
             news: displayOptions.news,
-            map: displayOptions.map,
+            //map: displayOptions.map,
         };
         /*instantiate child classes*/
         this.news = new News(this.displayArea.news);
@@ -16,7 +16,6 @@ class LandingPage{
     }
 
     createMapAndMarkers(eventLocations){
-        debugger;
         const locations = eventLocations; //locationArray
 
         mapboxgl.accessToken = 'pk.eyJ1IjoiamVuLWwiLCJhIjoiY2p0ZmR2bm8zMDJ4bDN5cGp2ZDk1cmhweCJ9.P0S6-ZdkFBaOaw0V0Q868A';
@@ -27,38 +26,20 @@ class LandingPage{
             zoom: 10
         });
 
-        var features = locations.map(location => ({
-            'type': 'Feature',
-            'properties': {
-                'message': 'location.organization',
-            },
-            'geometry': {
-                'type': 'Point',
-                'coordinates': [location.longitude, location.latitude],
-            }
-        }));
-
-        var geojson = {
-            'type': 'FeatureCollection',
-            'features': features,
-        };
-
         // add markers to map
-        geojson.features.forEach(marker => {
-            debugger;
+        locations.forEach(marker => {
             // create a DOM element for the marker
             var mark = document.createElement('div');
             mark.className = 'marker';
-            mark.style.backgroundImage = 'url(https://placekitten.com/g/30/30/)';
+            mark.style.backgroundImage = 'url(images/map_marker.png)';
 
             mark.addEventListener('click', function() {
-                window.alert(marker.properties.message);
+                //window.alert(marker.properties.message);
             });
-
 
             // add marker to map
             new mapboxgl.Marker(mark)
-                .setLngLat(marker.geometry.coordinates)
+                .setLngLat([marker.longitude, marker.latitude])
                 .addTo(this.map);
         });
 
