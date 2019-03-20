@@ -111,3 +111,13 @@ h1 {
 .modal a.close-modal{
     background-image: none;
 }
+
+.marker {
+    width: 30px;
+    height: 30px;
+    display: block;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+}
