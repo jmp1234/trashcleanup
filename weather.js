@@ -6,17 +6,23 @@
  */
 
 class Weather {
-    constructor() {
+    constructor(lat, lon) {
+        this.lat = lat;
+        this.lon = lon;
+        this.displayArea = {
+            city: $("#widgetCity"),
+            range: $("#widgetRange"),
+            temp:$("#widgetTemp"),
+            description: $("#widgetTempDesc"),
+            icon:$("#widgetIcon")
+        };
         this.getWeatherDataSuccess = this.getWeatherDataSuccess.bind(this);
         this.serverError = this.serverError.bind(this);
         this.sendDataToWidget = this.sendDataToWidget.bind(this);
-
+        this.getWeatherData();
     }
 
-    getWeatherData(lat, lon) {
-        this.lat = lat;
-        this.lon = lon;
-
+    getWeatherData() {
         $.ajax({
             url: 'http://api.openweathermap.org/data/2.5/weather',
             dataType: 'json',
@@ -60,10 +66,10 @@ class Weather {
             'height': '80rem'
         });
 
-        $("#widgetCity").text(weatherObject['city name']);
-        $("#widgetRange").text(weatherObject['temperature range']);
-        $("#widgetTemp").text(weatherObject['current temperature']);
-        $("#widgetTempDesc").text(weatherObject['weather description']);
-        $("#widgetIcon").append(completeIcon);
+        this.displayArea.city.text(weatherObject['city name']);
+        this.displayArea.range.text(weatherObject['temperature range']);
+        this.displayArea.temp.text(weatherObject['current temperature']);
+        this.displayArea.description.text(weatherObject['weather description']);
+        this.displayArea.icon.append(completeIcon);
     }
 }
