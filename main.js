@@ -34,12 +34,5 @@ function initializeApp() {
     }
 
     addClassToSidebarButton();
-
-    //loads the 'how to do the thing' box, not currently in use
-    // function showTipBox() {
-    //     setTimeout(function(){
-    //         $(".textContainer").addClass('bounce-in-top').css('visibility', 'visible');
-    //     }, 8000);
-    // }
-    // showTipBox();
+    toggleSidebar();
 }
