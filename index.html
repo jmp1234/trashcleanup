@@ -3,8 +3,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content='initial-scale=1,maximum-scale=1,user-scalable=no' >
     <title>2.19 Team 3 Hackathon</title>
+    
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -23,53 +26,23 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <span class="navbar-text">BEACH DAY CLEAN UP</span>
             </li>
             <li class="nav-item">
-<<<<<<< HEAD
-                <span class="navbar-text"><a href="#mapModal" rel="modal:open"> - - - - - - Open Modal</a> </span> </li> </ul>
-                            </nav> <div id="newsHeadlines">
-                            </div>
-
-                            <div class="mapContainer">
-                                <div id="mapBox"></div>
-                            </div>
-
-                            <!-- Modal HTML embedded directly into document -->
-                            <div id="mapModal" class="modal">
-                                <!-- weather info -->
-                                <div class="weatherWidgetContainer">
-                                    <div class="weatherCity">
-                                        <span id="widgetCity"></span><br>
-                                        WEATHER
-                                    </div>
-                                    <div class="weatherIcon">
-                                        <span id="widgetIcon"></span>
-                                    </div>
-                                    <div class="weatherTemp">
-                                        <span id="widgetTemp"></span><br>
-                                        <span id="widgetTempDesc"></span>
-                                    </div>
-                                </div>
-                                <!-- <p>info for the map modal goes here</p> -->
-                                <!-- <a href="#" rel="modal:close" class="modalcenter">Close</a> -->
-                            </div>
-
-
-
-=======
                 <span class="navbar-text"><a href="#mapModal" rel="modal:open"> - - - - - - Open Modal</a> </span>
             </li>
         </ul>
-    </nav>
-    <div id="newsHeadlines"></div>
+    </nav> -->
+    
 
     <div class="mapContainer">
         <div id="map"></div>
     </div>
+
+    <div id="newsHeadlines"></div>
 
     <!-- Modal HTML embedded directly into document -->
     <div id="mapModal" class="modal">
@@ -90,7 +63,7 @@
         <!-- <p>info for the map modal goes here</p> -->
         <!-- <a href="#" rel="modal:close" class="modalcenter">Close</a> -->
     </div>
->>>>>>> 629eca05a13e8daede842e4654dd86578ff837da
+
 </body>
 
 </html>
