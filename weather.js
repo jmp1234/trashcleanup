@@ -2,8 +2,6 @@ class Weather {
     constructor() {
         this.getWeatherData = this.getWeatherData.bind(this);
         this.sendDataToWidget = this.sendDataToWidget.bind(this);
-
-        // this.getWeatherData(33.66, -117.82); //currently set for Irvine, figure out how to do this on each map icon click
     }
 
     getWeatherData(lat, lon) {

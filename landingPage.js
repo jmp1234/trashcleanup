@@ -2,7 +2,6 @@ class LandingPage{
     constructor(displayOptions){
         this.displayArea = {
             news: displayOptions.news,
-            //map: displayOptions.map,
         };
         /*instantiate child classes*/
         this.news = new News(this.displayArea.news);
@@ -11,8 +10,6 @@ class LandingPage{
         this.events = new BeachCleanup(this.createMapAndMarkers);
 
         this.weatherVariable = new Weather();
-
-
     }
 
     createMapAndMarkers(eventLocations){
@@ -44,30 +41,10 @@ class LandingPage{
               $('#mapModal').modal('show');
             }.bind(this));
 
-            // add marker to map
             new mapboxgl.Marker(mark)
                 .setLngLat([marker.longitude, marker.latitude])
                 .addTo(this.map);
         });
-
-        // locations.forEach((marker) => {
-        //     debugger;
-        //     const mark = $("<div>", {
-        //         'class': 'marker',
-        //         'style': {
-        //             'background-image': 'url("images/conservation.png")',
-        //             'width': '30px',
-        //             'height': '30px'
-        //         }
-        //     });
-        //     mark.on('click', function() {
-        //         console.log('need marker modal');
-        //     });
-        //
-        //     new mapboxgl.Marker(mark)
-        //         .setLngLat([marker.longitude, marker.latitude])
-        //         .addTo(this.map);
-        // });
     }
 
 }

@@ -79,12 +79,12 @@ h1 {
 }
 
 #widgetCity {
-    font-family: "Segoe Bold";
+    font-family: "Segoe Bold", sans-serif;
     text-transform: uppercase;
 }
 
 #widgetTemp {
-    font-family: "Segoe Bold";
+    font-family: "Segoe Bold", sans-serif;
     font-weight: 600;
 }
 
