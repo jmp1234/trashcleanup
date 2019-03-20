@@ -1,3 +1,8 @@
+/**
+ * Main Landing Page, instantiate classes
+ * @jQuery selector - element targets for display
+ */
+
 class LandingPage{
     constructor(displayOptions){
         this.displayArea = {
@@ -13,8 +18,9 @@ class LandingPage{
     }
 
     createMapAndMarkers(eventLocations){
-        const locations = eventLocations; //locationArray
-        console.log('we:',this.weatherVariable)
+
+        const locations = eventLocations;
+
         mapboxgl.accessToken = 'pk.eyJ1IjoiamVuLWwiLCJhIjoiY2p0ZmR2bm8zMDJ4bDN5cGp2ZDk1cmhweCJ9.P0S6-ZdkFBaOaw0V0Q868A';
         this.map = new mapboxgl.Map({
             container: 'map',

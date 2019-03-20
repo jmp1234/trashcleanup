@@ -1,7 +1,16 @@
+/**
+ * Generates current weather data for the event location
+ * @class
+ * @param {number} - latitude
+ * @param {number} - longitude
+ */
+
 class Weather {
     constructor() {
-        this.getWeatherData = this.getWeatherData.bind(this);
+        this.getWeatherDataSuccess = this.getWeatherDataSuccess.bind(this);
+        this.serverError = this.serverError.bind(this);
         this.sendDataToWidget = this.sendDataToWidget.bind(this);
+
     }
 
     getWeatherData(lat, lon) {
@@ -18,25 +27,26 @@ class Weather {
                 lon: this.lon,
                 units: 'imperial',
             },
-            success: data => {
-                console.log('we got data!', data);
-
-                let weatherData = {
-                    'city name': data.name,
-                    'latitude': data.coord.lat,
-                    'longitude': data.coord.lon,
-                    'current temperature': data.main.temp.toFixed(0),
-                    'temperature range': `${(data.main.temp_min).toFixed(0)}-${(data.main.temp_max).toFixed(0)}`,
-                    'weather description': data.weather[0].description,
-                    'icon': data.weather[0].icon
-                };
-
-                this.sendDataToWidget(weatherData); //renders the info onto the dom
-            },
-            error: function () {
-                console.log('something went wrong getting weather data');
-            }
+            success: this.getWeatherDataSuccess,
+            error: this.serverError
         });
+    }
+
+    getWeatherDataSuccess(response){
+        if(response){
+            const weatherData = {
+                'city name': response.name,
+                'temperature range': `${(response.main.temp_min).toFixed(0)}°F-${(response.main.temp_max).toFixed(0)}°F`,
+                'current temperature': `${response.main.temp.toFixed(0)}°F`,
+                'weather description': response.weather[0].description,
+                'icon': response.weather[0].icon
+            };
+            this.sendDataToWidget(weatherData);
+        }
+    }
+
+    serverError(){
+        console.log('Failed to connect to the Server for weather data');
     }
 
     sendDataToWidget(weatherObject){
@@ -51,8 +61,9 @@ class Weather {
         });
 
         $("#widgetCity").text(weatherObject['city name']);
-        $("#widgetTemp").text(`${weatherObject['current temperature']}°F`);
-        $("#widgetTempDesc").text(`${weatherObject['weather description']}`);
+        $("#widgetRange").text(weatherObject['temperature range']);
+        $("#widgetTemp").text(weatherObject['current temperature']);
+        $("#widgetTempDesc").text(weatherObject['weather description']);
         $("#widgetIcon").append(completeIcon);
     }
 }

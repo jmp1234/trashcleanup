@@ -1,31 +1,33 @@
+/**
+ * Generate search for California Clean Up Events
+ * @class
+ * @callback - callback to generate map and markers following loading of events
+ */
+
 class BeachCleanup {
-  constructor(createMapCallback) {
-    this.callback = createMapCallback;
+  constructor(mapCallback) {
+    this.callback = mapCallback;
     this.beachCleanupLocations = null;
     this.retrieveLocationsSuccess = this.retrieveLocationsSuccess.bind(this);
+    this.serverError = this.serverError.bind(this);
     this.retrieveLocations();
-
   }
 
   retrieveLocations() {
-    var ajaxOptions = {
+    $.ajax({
       url: 'https://api.coastal.ca.gov/ccd/v1/locations',
       method: 'get',
       dataType: 'json',
       success: this.retrieveLocationsSuccess,
-      error: function(response) {
-        console.log('error in connecting to ajax! error 500')
-      },
+      error: this.serverError,
       complete: function() {
-        console.log('completed')
+        console.log('Completed event loading')
       }
-    };
-    $.ajax(ajaxOptions);
+    });
   }
 
   retrieveLocationsSuccess(response){
     if(response) {
-      console.log(response);
       const orangeCounty = response.filter(beachCleanup => /orange/gi.test(beachCleanup['county_region'])
           && beachCleanup['website'] && beachCleanup['organization']
           && beachCleanup['latitude'] > 33.509190 && beachCleanup['latitude'] < 33.704753
@@ -36,12 +38,14 @@ class BeachCleanup {
             'organization': location.organization,
             'latitude': location.latitude,
             'longitude': location.longitude}));
-      console.log(orangeCounty);
       this.beachCleanupLocations = orangeCounty;
       this.callback(this.beachCleanupLocations);
-      return true;
     } else {
-      console.log('error with your function')
+      console.log('Error with request')
     }
+  }
+
+  serverError(){
+    console.log('Failed to connect to the Server for clean up events')
   }
 }
