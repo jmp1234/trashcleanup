@@ -9,20 +9,28 @@ class LandingPage{
         this.news = new News();
         this.map = null;
         this.createMapAndMarkers = this.createMapAndMarkers.bind(this);
+        this.toggleSidebar = this.toggleSidebar.bind(this);
         this.events = new BeachCleanup(this.createMapAndMarkers);
+
+        $(".button").on("click tap", this.toggleSidebar);
+        $(document).keyup(function (e) {
+            if (e.keyCode === 27) {
+                this.toggleSidebar();
+            }
+        }.bind(this));
     }
 
     createMapAndMarkers(eventLocations){
         const locations = eventLocations;
 
-        mapboxgl.accessToken = 'pk.eyJ1IjoiamVuLWwiLCJhIjoiY2p0ZmR2bm8zMDJ4bDN5cGp2ZDk1cmhweCJ9.P0S6-ZdkFBaOaw0V0Q868A';
-          this.map = new mapboxgl.Map({
-                container: 'map',
-                style: 'mapbox://styles/mapbox/streets-v9',
-                center: [-117.956556, 33.630271],
-                zoom: 10,
-                minZoom: 10
-          });
+        mapboxgl.accessToken = 'pk.eyJ1IjoibXJwb29sZSIsImEiOiJjanRoaGY3N3owdjNvNDNwZHhpZnFuc3pxIn0.xhup6EdfsxVuN8nyKCWhPA';
+        this.map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mrpoole/cjthhffxv0wen1fodjt07ql0t',
+            center: [-117.956556, 33.630271],
+            zoom: 10,
+            minZoom: 10
+        });
 
         // add markers to map
         locations.forEach(marker => {
@@ -35,10 +43,11 @@ class LandingPage{
               $("#widgetIcon").children().remove();
               new Weather(marker.latitude, marker.longitude);
               $('.organization').text(marker.organization);
-              $('.website').attr({'href': marker.website,
-                                      'target': '_blank',
-                                    });
-              $('.website').text(marker.website)
+              $('.website').attr({
+                  'href': marker.website,
+                  'target': '_blank',
+              });
+              $('.website').text(marker.website);
               $('#mapModal').modal({
                 fadeDuration: 100,
                 show: true,
@@ -51,4 +60,16 @@ class LandingPage{
         });
     }
 
+    addClassToSidebarButton() {
+        $(".button").addClass('pulsate-fwd');
+        $(".button").click(function () {
+            $(".button").removeClass("pulsate-fwd");
+        });
+    }
+
+    toggleSidebar() {
+        $(".button").toggleClass("active");
+        $("main").toggleClass("move-to-right");
+        $(".sidebar-item").toggleClass("active");
+    }
 }
