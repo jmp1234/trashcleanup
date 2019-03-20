@@ -5,8 +5,8 @@
  */
 
 class News {
-    constructor(displayArea){
-        this.displayArea = displayArea;
+    constructor(){
+        this.displayArea = $("#newsHeadlines");
         this.newsArticles = [];
         this.headlineDomElement = null;
 
@@ -32,7 +32,6 @@ class News {
     }
 
     getNewsSuccess(response){
-        console.log('news', response);
         if(response.status === 'ok'){
             const articlesArr = response.articles;
             for(let index = 0; index < articlesArr.length; index++){
