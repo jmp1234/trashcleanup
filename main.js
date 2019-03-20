@@ -2,7 +2,6 @@
 $(document).ready(initializeApp);
 
 var landingPage = null;
-let weatherVariable = null;
 
 function initializeApp(){
     var displayOptions = {
@@ -11,7 +10,4 @@ function initializeApp(){
 
     };
     landingPage = new LandingPage(displayOptions);
-
-    weatherVariable = new Weather();
-
 }
