@@ -23,11 +23,10 @@ body {
 
 h1 {
     font-size: 24px;
-    font-size: 2.4rem;
-    /* =24px */
+    font-size: 2.4rem; /* =24px */
 }
 
-/*News Headline Ticker*/
+/* News Headline Ticker */
 @keyframes ticker {
     0% {
         transform: translateX(0);
@@ -52,7 +51,7 @@ h1 {
 .tickerAnimation {
     display: inline-block;
     white-space: nowrap;
-    animation: ticker 90s infinite linear;
+    animation: ticker 180s infinite linear;
 }
 
 .tickerAnimation:hover {
@@ -65,7 +64,7 @@ h1 {
     font-size: 2rem;
 }
 
-/*Weather*/
+/* Weather */
 .weatherWidgetContainer {
     display: flex;
     justify-content: space-evenly;
@@ -93,9 +92,7 @@ h1 {
     text-transform: capitalize;
 }
 
-
 /* Map */
-
 .mapContainer {
     position: relative;
     height: 80vh;
@@ -110,12 +107,6 @@ h1 {
     width: 100%;
 }
 
-/* Modal */
-
-.modal a.close-modal{
-    background-image: none;
-}
-
 .marker {
     width: 30px;
     height: 30px;
@@ -124,4 +115,9 @@ h1 {
     border-radius: 50%;
     cursor: pointer;
     padding: 0;
+}
+
+/* Modal */
+.modal a.close-modal{
+    background-image: none;
 }
