@@ -40,6 +40,7 @@ class BeachCleanup {
             'longitude': location.longitude}));
       this.beachCleanupLocations = orangeCounty;
       this.callback(this.beachCleanupLocations);
+      $(".loading").remove();
     } else {
       console.log('Error with request')
     }

@@ -105,9 +105,20 @@ a:hover {
 
 #widgetTempDesc {
     text-transform: capitalize;
+
 }
 
 /* Map */
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    color: white;
+    font-size: 3em;
+}
+
 .mapContainer {
     position: relative;
     height: 100vh;
@@ -217,17 +228,18 @@ main {
 }
 
 .nav-left {
-    position: fixed;
+    position: absolute;
     left: 4%;
     top: 2%;
 }
 
 .nav-left.visible-xs {
     z-index: 3;
+    display: none;
 }
 
 .hidden-xs {
-    display: none;
+    display: block;
 }
 
 .middle {
@@ -426,7 +438,7 @@ nav {
     0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.sidebarText h1 {
     font-size: 3.7rem;
     text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
     0px 8px 13px rgba(0, 0, 0, 0.1),
@@ -629,22 +641,42 @@ h1 {
 
 /*media queries*/
 
-@media (min-width: 480px) {
+@media (max-width: 1024px) {
+    .sidebarText h1 {
+        font-size: 1.6em;
+    }
+
+    .sidebarContainer p {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebarText h1 {
+        font-size: 1.5em;
+    }
+
+    .sidebar-anchor {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 480px) {
     .nav-list {
         display: block;
     }
-}
-
-@media (min-width: 768px) {
-    .nav-left {
-        position: absolute;
+    .sidebarText h1 {
+        font-size: 1em;
     }
 
-    .hidden-xs {
-        display: block;
+    .sidebarContainer p {
+        font-size: 0.7em;
     }
 
-    .visible-xs {
-        display: none;
+    .sidebar-anchor {
+        font-size: 0.8em;
     }
 }
+
+
+
