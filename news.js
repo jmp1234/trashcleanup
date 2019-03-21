@@ -1,7 +1,6 @@
 /**
  * Generates news headlines related to ocean pollution
  * @class
- * @jQuery selector - element target to append news headlines
  */
 
 class News {
