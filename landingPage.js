@@ -3,8 +3,8 @@
  * @jQuery selector - element targets for display
  */
 
-class LandingPage{
-    constructor(){
+class LandingPage {
+    constructor() {
         /*instantiate child classes*/
         this.news = new News();
         this.map = null;
@@ -20,37 +20,37 @@ class LandingPage{
         }.bind(this));
     }
 
-    aboutPageBorderEffects(){
+    aboutPageBorderEffects() {
         document.querySelector('.profileImgJen').onmousemove = (e) => {
 
             let x = e.pageX - e.target.offsetLeft
             let y = e.pageY - e.target.offsetTop
-        
+
             e.target.style.setProperty('--x', `${ x }px`)
             e.target.style.setProperty('--y', `${ y }px`)
-            
+
         };
         document.querySelector('.profileImgJohnny').onmousemove = (e) => {
 
             let x = e.pageX - e.target.offsetLeft
             let y = e.pageY - e.target.offsetTop
-        
+
             e.target.style.setProperty('--x', `${ x }px`)
             e.target.style.setProperty('--y', `${ y }px`)
-            
+
         }
         document.querySelector('.profileImgMichelle').onmousemove = (e) => {
 
             let x = e.pageX - e.target.offsetLeft
             let y = e.pageY - e.target.offsetTop
-        
+
             e.target.style.setProperty('--x', `${ x }px`)
             e.target.style.setProperty('--y', `${ y }px`)
-            
+
         }
     }
 
-    createMapAndMarkers(eventLocations){
+    createMapAndMarkers(eventLocations) {
         const locations = eventLocations;
 
         mapboxgl.accessToken = 'pk.eyJ1IjoibXJwb29sZSIsImEiOiJjanRoaGY3N3owdjNvNDNwZHhpZnFuc3pxIn0.xhup6EdfsxVuN8nyKCWhPA';
@@ -69,19 +69,19 @@ class LandingPage{
             mark.className = 'marker';
             mark.style.backgroundImage = 'url(images/map_marker.png)';
 
-            mark.addEventListener('click', function() {
-              $("#widgetIcon").children().remove();
-              new Weather(marker.latitude, marker.longitude);
-              $('.organization').text(marker.organization);
-              $('.website').attr({
-                  'href': marker.website,
-                  'target': '_blank',
-              });
-              $('.website').text(marker.website);
-              $('#mapModal').modal({
-                fadeDuration: 100,
-                show: true,
-              })
+            mark.addEventListener('click', function () {
+                $("#widgetIcon").children().remove();
+                new Weather(marker.latitude, marker.longitude);
+                $('.organization').text(marker.organization);
+                $('.website').attr({
+                    'href': marker.website,
+                    'target': '_blank',
+                });
+                $('.website').text(marker.website);
+                $('#mapModal').modal({
+                    fadeDuration: 100,
+                    show: true,
+                })
             }.bind(this));
 
             new mapboxgl.Marker(mark)
@@ -92,6 +92,7 @@ class LandingPage{
 
     addClassToSidebarButton() {
         $(".button").addClass('pulsate-fwd');
+        $(".fa-chevron-circle-down").addClass('pulsate-fwd');
         $(".button").click(function () {
             $(".button").removeClass("pulsate-fwd");
         });
