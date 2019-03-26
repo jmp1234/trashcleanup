@@ -20,9 +20,6 @@ class BeachCleanup {
       dataType: 'json',
       success: this.retrieveLocationsSuccess,
       error: this.serverError,
-      complete: function() {
-        console.log('Completed event loading')
-      }
     });
   }
 

@@ -21,7 +21,7 @@ class News {
             dataType: 'json',
             data: {
                 apiKey: 'afebec8e4c394293bae38bba564a909c',
-                q: '+plastic, +ocean',
+                q: '+trash, +ocean, pollution',
                 sortBy: 'relevancy',
                 language: 'en'
             },

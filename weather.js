@@ -56,8 +56,6 @@ class Weather {
     }
 
     sendDataToWidget(weatherObject){
-        console.log(weatherObject);
-
         let icon = weatherObject['icon'];
         let iconUrl = `https://openweathermap.org/themes/openweathermap/assets/vendor/owm/img/widgets/${icon}.png`;
         let completeIcon = $("<img>").attr({

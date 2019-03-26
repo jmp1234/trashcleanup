@@ -157,9 +157,11 @@ a:hover {
 
 #newsHeadlines {
     position: absolute;
-    bottom: 1px;
+    bottom: 0;
     width: 100%;
     overflow: hidden;
+    z-index: 2;
+    background: linear-gradient(to right,rgb(255,228,155),rgb(255, 123, 0));
 }
 
 .tickerWrap {
@@ -179,8 +181,9 @@ a:hover {
 
 .tickerItem {
     display: inline-block;
-    padding: 0 3rem;
+    padding: 0.5rem 3rem;
     font-size: 2rem;
+    font-weight: 900;
     color: black;
 }
 
@@ -199,6 +202,10 @@ a:hover {
     border: 1px solid black;
 }
 
+.weatherCity, .weatherIcon, .weatherTemp {
+    width: 30%;
+}
+
 #widgetCity {
     font-family: "Segoe Bold", sans-serif;
     text-transform: uppercase;
@@ -211,7 +218,6 @@ a:hover {
 
 #widgetTempDesc {
     text-transform: capitalize;
-
 }
 
 /* Map */
@@ -296,8 +302,8 @@ main {
     z-index: 1;
     left: 0;
     background:
-        linear-gradient(rgba(92, 117, 145, 0.1),
-        rgb(68, 97, 129)),
+        linear-gradient(rgba(255,228,155, 0.1),
+        rgba(255, 123, 0, 0.7), rgba(0,0,60,0.95)),
         url(images/palmtrees.jpeg);
     font-family: Tahoma;
     text-align: justify;
@@ -460,6 +466,7 @@ nav {
     color: #FFF;
     text-decoration: none;
     font-size: 1.8em;
+    font-weight: 700;
     text-transform: uppercase;
     position: relative;
     padding-bottom: 7px;
