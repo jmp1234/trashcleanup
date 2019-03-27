@@ -364,7 +364,8 @@ main {
         linear-gradient(rgba(255,228,155, 0.1),
         rgba(255, 123, 0, 0.7), rgba(0,0,60,0.95)),
         url(images/palmtrees.jpeg);
-    font-family: Tahoma;
+    font-family: "Open Sans", Tahoma, sans-serif;
+    font-weight: 600;
     text-align: justify;
     text-justify: inter-word;
     padding: 0 10px;
@@ -484,30 +485,6 @@ main {
     transition: all .7s .2s ease-in-out;
 }
 
-.sidebar-item:nth-child(2) {
-    -webkit-transition: all .7s .4s ease-in-out;
-    -moz-transition: all .7s .4s ease-in-out;
-    -ms-transition: all .7s .4s ease-in-out;
-    -o-transition: all .7s .4s ease-in-out;
-    transition: all .7s .4s ease-in-out;
-}
-
-.sidebar-item:nth-child(3) {
-    -webkit-transition: all .7s .6s ease-in-out;
-    -moz-transition: all .7s .6s ease-in-out;
-    -ms-transition: all .7s .6s ease-in-out;
-    -o-transition: all .7s .6s ease-in-out;
-    transition: all .7s .6s ease-in-out;
-}
-
-.sidebar-item:last-child {
-    -webkit-transition: all .7s .8s ease-in-out;
-    -moz-transition: all .7s .8s ease-in-out;
-    -ms-transition: all .7s .8s ease-in-out;
-    -o-transition: all .7s .8s ease-in-out;
-    transition: all .7s .6s ease-in-out;
-}
-
 .sidebar-item.active {
     opacity: 1;
     -webkit-transform: translateY(0px);
@@ -560,6 +537,10 @@ main {
     text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
         0px 8px 13px rgba(0, 0, 0, 0.1),
         0px 18px 23px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a:hover {
+    color: #fad030;
 }
 
 /*animations*/
