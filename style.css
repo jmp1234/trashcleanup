@@ -1,16 +1,7 @@
-@font-face {
-    font-family: "Segoe";
-    src: url(fonts/Segoe\ UI.woff);
-}
-
-@font-face {
-    font-family: "Segoe Bold";
-    src: url(fonts/Segoe\ UI\ Bold.woff);
-}
-
 @import url(https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic);
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 html {
     font-size: 62.5%;
@@ -194,12 +185,13 @@ a:hover {
     align-items: center;
     text-align: center;
     height: 6rem;
-    background-color: rgb(31, 86, 124);
-    font-family: "Segoe", Tahoma, sans-serif;
+    width: 100%;
+    background: linear-gradient(rgba(255,228,155, 0.1),
+    rgba(255, 123, 0, 0.7), rgba(0,0,60,0.95));
+    font-family: 'Open Sans', Tahoma, sans-serif;
     color: white;
-    padding: 2% 20%;
-    border-radius: 15px;
-    border: 1px solid black;
+    padding: 2%;
+    border-radius: 0px 0px 10px 10px;
 }
 
 .weatherCity, .weatherIcon, .weatherTemp {
@@ -207,12 +199,10 @@ a:hover {
 }
 
 #widgetCity {
-    font-family: "Segoe Bold", sans-serif;
     text-transform: uppercase;
 }
 
 #widgetTemp {
-    font-family: "Segoe Bold", sans-serif;
     font-weight: 600;
 }
 
@@ -255,14 +245,29 @@ a:hover {
 }
 
 /* Modal */
+.eventInfoContainer {
+    border-radius: 10px 10px 0 0;
+    padding-bottom: 4%;
+    background: linear-gradient(rgba(155, 198, 255, .3),
+    rgba(0, 255, 242, 0.1), rgba(255,228,155, 0.1));
+}
+
 .modal a.close-modal {
     background-image: none;
 }
 
+.modal {
+    padding: 0;
+    margin: 0;
+    color: #444;
+}
+
 #mapModal {
     text-align: center;
-    background-color: lightcyan;
+    background-color: white;
     border: 2px solid black;
+    margin-bottom: 3%;
+    padding: 20px;
 }
 
 .modalcenter {
@@ -396,10 +401,6 @@ main {
     -ms-transform: translateX(25%);
     -o-transform: translateX(25%);
     transform: translateX(25%);
-}
-
-nav {
-    padding-top: 30px;
 }
 
 .sidebar-list {

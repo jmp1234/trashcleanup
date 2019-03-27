@@ -42,7 +42,7 @@ class Weather {
         if(response){
             const weatherData = {
                 'city name': response.name,
-                'temperature range': `${(response.main.temp_min).toFixed(0)}°F-${(response.main.temp_max).toFixed(0)}°F`,
+                'temperature range': `${(response.main.temp_min).toFixed(0)}°F - ${(response.main.temp_max).toFixed(0)}°F`,
                 'current temperature': `${response.main.temp.toFixed(0)}°F`,
                 'weather description': response.weather[0].description,
                 'icon': response.weather[0].icon
