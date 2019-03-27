@@ -905,6 +905,20 @@ nav {
     }
 }
 
+@media (max-width: 912px) {
+  .sidebar {
+    width: 75%;
+  }
+  .move-to-right {
+      -webkit-transform: translateX(75%);
+      -moz-transform: translateX(75%);
+      -ms-transform: translateX(75%);
+      -o-transform: translateX(75%);
+      transform: translateX(75%);
+  }
+}
+
+
 @media (max-width: 768px) {
     .sidebarText h1 {
         font-size: 1.5em;
@@ -913,6 +927,16 @@ nav {
     .sidebar-anchor {
         font-size: 1.4em;
     }
+    /* .sidebar {
+      width: 75%;
+    }
+    .move-to-right {
+        -webkit-transform: translateX(75%);
+        -moz-transform: translateX(75%);
+        -ms-transform: translateX(75%);
+        -o-transform: translateX(75%);
+        transform: translateX(75%);
+    } */
 }
 
 @media (max-width: 480px) {
