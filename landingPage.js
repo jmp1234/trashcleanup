@@ -64,8 +64,8 @@ class LandingPage {
             container: 'map',
             style: 'mapbox://styles/mrpoole/cjtq69hgs1dmu1fr13jv0sze7',
             center: [-117.72533, 33.6103],
-            zoom: 10,
-            minZoom: 10
+            zoom: 5,
+            // minZoom: 10
         });
 
         // add markers to map

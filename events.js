@@ -15,7 +15,7 @@ class BeachCleanup {
 
   retrieveLocations() {
     $.ajax({
-      url: 'https://api.coastal.ca.gov/ccd/v1/locations',
+      url: 'https://www.eventbriteapi.com/v3/events/search/?q=beach+cleanup&location.address=ca&token=3VZFDKZSKZXYGFQGEYDU&expand=venue',
       method: 'get',
       dataType: 'json',
       success: this.retrieveLocationsSuccess,
@@ -25,17 +25,16 @@ class BeachCleanup {
 
   retrieveLocationsSuccess(response){
     if(response) {
-      const orangeCounty = response.filter(beachCleanup => /orange/gi.test(beachCleanup['county_region'])
-          && beachCleanup['website'] && beachCleanup['organization']
-          && beachCleanup['latitude'] > 33.509190 && beachCleanup['latitude'] < 33.704753
-          && beachCleanup['longitude'] <= -117.701)
-          .sort((eventX, eventY) => eventX.latitude - eventY.latitude) //show locations between laguna and huntington
-          //organize each location by website, organization, latitude, longitude
-          .map(location => ({'website': location.website,
-            'organization': location.organization,
-            'latitude': location.latitude,
-            'longitude': location.longitude}));
-      this.beachCleanupLocations = orangeCounty;
+
+      const locations = response.events.map( location => {
+        return ({
+          'website': location.url,
+          'organization': location.name.text,
+          'latitude': location.venue.latitude,
+          'longitude': location.venue.longitude
+        })
+      })
+      this.beachCleanupLocations = locations;
       this.callback(this.beachCleanupLocations);
       $(".loading").remove();
     } else {
