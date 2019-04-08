@@ -58,13 +58,12 @@ class LandingPage {
 
     createMapAndMarkers(eventLocations) {
         const locations = eventLocations;
-
         mapboxgl.accessToken = 'pk.eyJ1IjoibXJwb29sZSIsImEiOiJjanRoaGY3N3owdjNvNDNwZHhpZnFuc3pxIn0.xhup6EdfsxVuN8nyKCWhPA';
         this.map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mrpoole/cjtq69hgs1dmu1fr13jv0sze7',
-            center: [-117.72533, 33.6103],
-            zoom: 5,
+            center: [-91, 36],
+            zoom: 3,
             // minZoom: 10
         });
 
