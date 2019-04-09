@@ -14,7 +14,9 @@ class BeachCleanup {
     this.createLocations();
   }
 
+
   createLocations() {
+    console.log('hello');
     for(let pageNumber=1; pageNumber<=4; pageNumber++) {
       this.retrieveLocations(pageNumber);
     }
