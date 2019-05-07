@@ -16,7 +16,6 @@ class BeachCleanup {
 
 
   createLocations() {
-    console.log('hello');
     for(let pageNumber=1; pageNumber<=4; pageNumber++) {
       this.retrieveLocations(pageNumber);
     }
@@ -30,7 +29,7 @@ class BeachCleanup {
       method: 'get',
       dataType: 'json',
       data: {
-        q: 'trash cleanup',
+        q: 'trash clean',
       },
       success: this.retrieveLocationsSuccess,
       error: this.serverError,
@@ -43,12 +42,14 @@ class BeachCleanup {
       this.pages--;
       console.log(response.pagination)
       const locations = response.events.map( location => {
-        return ({
-          'website': location.url,
-          'organization': location.name.text,
-          'latitude': location.venue.latitude,
-          'longitude': location.venue.longitude
-        })
+        if(location.venue) {
+          return ({
+            'website': location.url,
+            'organization': location.name.text,
+            'latitude': location.venue.latitude,
+            'longitude': location.venue.longitude
+          })
+        }
       })
       this.beachCleanupLocations.push(...locations);
       if(this.pages === 0){
