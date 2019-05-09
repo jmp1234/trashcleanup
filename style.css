@@ -197,6 +197,7 @@ a:hover {
 
 .weatherCity, .weatherTemp {
     width: 40%;
+    text-shadow: 2px 2px rgb(105,105,105);
 }
 
 .weatherIcon {
@@ -920,6 +921,10 @@ main {
     .sidebar-anchor {
         font-size: 1.4em;
     }
+
+    .carouselImage {
+        width: 655.18px;
+    }
     /* .sidebar {
       width: 75%;
     }
@@ -947,5 +952,7 @@ main {
     .sidebar-anchor {
         font-size: 0.8em;
     }
-
+    .carouselImage {
+        width: 346.5px;
+    }
 }
