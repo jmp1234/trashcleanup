@@ -40,7 +40,6 @@ class BeachCleanup {
   retrieveLocationsSuccess(response){
     if(response) {
       this.pages--;
-      console.log(response.pagination)
       const locations = response.events.filter( location => {
         return location.url && location.name && location.venue;
       }).map( location => {
@@ -52,7 +51,6 @@ class BeachCleanup {
           })
       });
       this.beachCleanupLocations.push(...locations);
-      console.log(this.pages, this.beachCleanupLocations)
       if(this.pages === 0){
         this.callback(this.beachCleanupLocations);
         $(".loading").remove();
