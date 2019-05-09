@@ -41,16 +41,16 @@ class BeachCleanup {
     if(response) {
       this.pages--;
       console.log(response.pagination)
-      const locations = response.events.map( location => {
-        if(location.venue) {
+      const locations = response.events.filter( location => {
+        return location.url && location.name && location.venue.latitude && location.venue.longitude;
+      }).map( location => {
           return ({
             'website': location.url,
             'organization': location.name.text,
             'latitude': location.venue.latitude,
             'longitude': location.venue.longitude
           })
-        }
-      })
+      });
       this.beachCleanupLocations.push(...locations);
       if(this.pages === 0){
         this.callback(this.beachCleanupLocations);
