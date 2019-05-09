@@ -7,37 +7,54 @@
 class BeachCleanup {
   constructor(mapCallback) {
     this.callback = mapCallback;
-    this.beachCleanupLocations = null;
+    this.pages = 4;
+    this.beachCleanupLocations = [];
     this.retrieveLocationsSuccess = this.retrieveLocationsSuccess.bind(this);
     this.serverError = this.serverError.bind(this);
-    this.retrieveLocations();
+    this.createLocations();
   }
 
-  retrieveLocations() {
+
+  createLocations() {
+    for(let pageNumber=1; pageNumber<=4; pageNumber++) {
+      this.retrieveLocations(pageNumber);
+    }
+  }
+
+
+  retrieveLocations(index) {
     $.ajax({
-      url: 'https://api.coastal.ca.gov/ccd/v1/locations',
+      url: `https://www.eventbriteapi.com/v3/events/search/?token=3VZFDKZSKZXYGFQGEYDU&page=${index}&expand=venue`,
+      // url: `https://www.eventbriteapi.com/v3/events/search/?token=3VZFDKZSKZXYGFQGEYDU&page=${index}&expand=venue&q=trash+cleanup`,
       method: 'get',
       dataType: 'json',
+      data: {
+        q: 'cleanup',
+      },
       success: this.retrieveLocationsSuccess,
       error: this.serverError,
     });
   }
 
+
   retrieveLocationsSuccess(response){
     if(response) {
-      const orangeCounty = response.filter(beachCleanup => /orange/gi.test(beachCleanup['county_region'])
-          && beachCleanup['website'] && beachCleanup['organization']
-          && beachCleanup['latitude'] > 33.509190 && beachCleanup['latitude'] < 33.704753
-          && beachCleanup['longitude'] <= -117.701)
-          .sort((eventX, eventY) => eventX.latitude - eventY.latitude) //show locations between laguna and huntington
-          //organize each location by website, organization, latitude, longitude
-          .map(location => ({'website': location.website,
-            'organization': location.organization,
-            'latitude': location.latitude,
-            'longitude': location.longitude}));
-      this.beachCleanupLocations = orangeCounty;
-      this.callback(this.beachCleanupLocations);
-      $(".loading").remove();
+      this.pages--;
+      const locations = response.events.filter( location => {
+        return location.url && location.name && location.venue;
+      }).map( location => {
+          return ({
+            'website': location.url,
+            'organization': location.name.text,
+            'latitude': location.venue.latitude,
+            'longitude': location.venue.longitude
+          })
+      });
+      this.beachCleanupLocations.push(...locations);
+      if(this.pages === 0){
+        this.callback(this.beachCleanupLocations);
+        $(".loading").remove();
+      }
     } else {
       console.log('Error with request')
     }
