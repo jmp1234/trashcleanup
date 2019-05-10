@@ -5,55 +5,28 @@
 
 class LandingPage {
     constructor() {
-        this.news = new News();
-        this.map = null;
         this.createMapAndMarkers = this.createMapAndMarkers.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
+        this.showIntroModal = this.showIntroModal.bind(this);
+
+        this.news = new News();
+        this.map = null;
         this.events = new BeachCleanup(this.createMapAndMarkers);
 
+        this.initializeEventListeners();
+    }
+
+    initializeEventListeners(){
+        this.showIntroModal();
+        this.toggleSidebar();
+        this.addClassToSidebarButton();
+        $(".intro").on('click', this.showIntroModal);
         $(".button").on("click tap", this.toggleSidebar);
-        $(".intro").on('click', ()=>{
-        $('#introModal').modal({
-            fadeDuration: 100,
-            show: true,
-            });
-        });
         $(document).keyup(function (e) {
             if (e.keyCode === 27) {
                 this.toggleSidebar();
             }
         }.bind(this));
-        $(".sidebar-anchor").on('click', this.aboutPageBorderEffects);
-    }
-
-    aboutPageBorderEffects() {
-        document.querySelector('.profileImgJen').onmousemove = (e) => {
-
-            let x = e.pageX - e.target.offsetLeft
-            let y = e.pageY - e.target.offsetTop
-
-            e.target.style.setProperty('--x', `${ x }px`)
-            e.target.style.setProperty('--y', `${ y }px`)
-
-        };
-        document.querySelector('.profileImgJohnny').onmousemove = (e) => {
-
-            let x = e.pageX - e.target.offsetLeft
-            let y = e.pageY - e.target.offsetTop
-
-            e.target.style.setProperty('--x', `${ x }px`)
-            e.target.style.setProperty('--y', `${ y }px`)
-
-        };
-        document.querySelector('.profileImgMichelle').onmousemove = (e) => {
-
-            let x = e.pageX - e.target.offsetLeft
-            let y = e.pageY - e.target.offsetTop
-
-            e.target.style.setProperty('--x', `${ x }px`)
-            e.target.style.setProperty('--y', `${ y }px`)
-
-        }
     }
 
     createMapAndMarkers(eventLocations) {
@@ -69,14 +42,13 @@ class LandingPage {
 
         // add markers to map
         locations.forEach(marker => {
-            // create a DOM element for the marker
             const mark = document.createElement('div');
             mark.className = 'marker';
             mark.style.backgroundImage = 'url(images/marker.png)';
 
             mark.addEventListener('click', () => {
                 $("#widgetCity, #widgetRange, #widgetIcon, #widgetTemp, #widgetTempDesc").empty();
-                $(".twitter-share-button, .twitter-share-script").remove();
+                $(".fb-share-button, .twitter-share-button, .twitter-share-script").remove();
                 new Weather(marker.latitude, marker.longitude);
                 $('.organization').text(marker.organization);
                 $('.website').attr({
@@ -84,24 +56,35 @@ class LandingPage {
                     'target': '_blank',
                 });
                 $('.website').text(marker.website);
-                //share buttons
-                $(".fb-share-button").attr('src', `https://www.facebook.com/plugins/share_button.php?href=${marker.website}&layout=button&size=small&mobile_iframe=true&width=60&height=20&appId`);
-                const twitterShareButton = $("<a>", {
+
+                const facebookShareButton = $('<iframe>', {
+                    'src': `https://www.facebook.com/plugins/share_button.php?href=${marker.website}&layout=button&size=small&width=59&height=20&appId&quote=Let's_keep_our_ocean_clean!`,
+                    'class': 'fb-share-button',
+                    'style': 'width: 61px; height: 20px; border: none; overflow: hidden',
+                    'scrolling': 'no',
+                    'frameborder': '0',
+                    'allowTransparency': 'true',
+                    'allow': 'encrypted-media'
+                });
+
+                const twitterShareButton = $('<a>', {
                     'href': 'https://twitter.com/share?ref_src=twsrc%5Etfw',
                     'class': 'twitter-share-button',
                     'data-size': 'small',
-                    'data-text': "Let's keep our ocean clean!",
+                    'data-text': 'Let\'s keep our ocean clean!',
                     'data-url': marker.website,
                     'data-hashtags': 'trashtag',
                     'data-lang': 'en',
                     'data-show-count': 'false'
                 }).text('Tweet');
-                const twitterScriptElement = $("<script async>").attr({
+                const twitterScriptElement = $('<script async>').attr({
                     'class': 'twitter-share-script',
                     'src': 'https://platform.twitter.com/widgets.js',
                     'charset': 'utf-8'
                 });
-                $("#shareEvent").append(twitterShareButton, twitterScriptElement);
+
+                $("#shareEvent").append(facebookShareButton, twitterShareButton, twitterScriptElement);
+
                 $('#mapModal').modal({
                     fadeDuration: 100,
                     show: true,
@@ -114,11 +97,17 @@ class LandingPage {
         });
     }
 
+    showIntroModal() {
+        $('#introModal').modal({
+            fadeDuration: 100,
+            show: true,
+        });
+    }
+
     addClassToSidebarButton() {
         $(".button").addClass('pulsate-fwd');
-        $(".fa-chevron-circle-down").addClass('pulsate-fwd');
-        $(".button").click(function () {
-            $(".button").removeClass("pulsate-fwd");
+        $(".button").on('click', () => {
+            $(".button").toggleClass("pulsate-fwd");
         });
     }
 
