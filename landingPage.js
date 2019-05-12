@@ -16,7 +16,7 @@ class LandingPage {
         this.initializeEventListeners();
     }
 
-    initializeEventListeners(){
+    initializeEventListeners() {
         this.showIntroModal();
         this.toggleSidebar();
         this.addClassToSidebarButton();
@@ -39,6 +39,14 @@ class LandingPage {
             zoom: 3,
             // minZoom: 10
         });
+
+        // add geolocation to the map
+        this.map.addControl(new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+        }));
 
         // add markers to map
         locations.forEach(marker => {
