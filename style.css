@@ -883,9 +883,6 @@ main {
     .sidebarContainer p {
         font-size: 1.1em;
     }
-    /* .sidebar {
-      width: 75%;
-    } */
 }
 
 @media (max-width: 912px) {
@@ -917,33 +914,17 @@ main {
     .carouselImage {
         width: 655.18px;
     }
-    /* .sidebar {
-      width: 75%;
-    }
-    .move-to-right {
-        -webkit-transform: translateX(75%);
-        -moz-transform: translateX(75%);
-        -ms-transform: translateX(75%);
-        -o-transform: translateX(75%);
-        transform: translateX(75%);
-    } */
 }
 
 @media (max-width: 480px) {
     .nav-list {
         display: block;
     }
-    .sidebarText h1 {
+
+    .sidebarContainer p {
         font-size: 1em;
     }
 
-    .sidebarContainer p {
-        font-size: 0.7em;
-    }
-
-    .sidebar-anchor {
-        font-size: 0.8em;
-    }
     .carouselImage {
         width: 346.5px;
     }
