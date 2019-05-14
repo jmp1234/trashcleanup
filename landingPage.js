@@ -35,7 +35,7 @@ class LandingPage {
         this.map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mrpoole/cjtq69hgs1dmu1fr13jv0sze7',
-            center: [-91, 36],
+            center: [-81.5, 36],
             zoom: 3,
             // minZoom: 10
         });

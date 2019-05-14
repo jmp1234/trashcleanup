@@ -376,6 +376,7 @@ main {
     padding: 0 10px;
     background-color: rgb(68, 97, 129);
     background-size: cover;
+    overflow-y: auto;
 }
 
 .bar {
@@ -868,20 +869,31 @@ main {
 
 
 /*media queries*/
+@media (max-width: 1200px) {
+  .sidebarText h1 {
+      font-size: 1.6em;
+  }
+  .sidebarContainer p {
+      font-size: 1.2em;
+  }
+}
 
 @media (max-width: 1024px) {
-    .sidebarText h1 {
-        font-size: 1.6em;
-    }
 
     .sidebarContainer p {
-        font-size: 1.2em;
+        font-size: 1.1em;
     }
+    /* .sidebar {
+      width: 75%;
+    } */
 }
 
 @media (max-width: 912px) {
   .sidebar {
     width: 75%;
+  }
+  .sidebarContainer p {
+      font-size: 1.3em;
   }
   .move-to-right {
       -webkit-transform: translateX(75%);
