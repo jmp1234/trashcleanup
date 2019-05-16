@@ -5,18 +5,18 @@
 
 class LandingPage {
     constructor() {
-        this.createMapAndMarkers = this.createMapAndMarkers.bind(this);
+        this.createMapMarkers = this.createMapMarkers.bind(this);
         this.toggleSidebar = this.toggleSidebar.bind(this);
-        this.showIntroModal = this.showIntroModal.bind(this);
 
         this.news = new News();
         this.map = null;
-        this.events = new BeachCleanup(this.createMapAndMarkers);
+        this.events = new BeachCleanup(this.createMapMarkers);
 
         this.initializeEventListeners();
     }
 
     initializeEventListeners() {
+        this.createMap();
         this.showIntroModal();
         this.toggleSidebar();
         this.addClassToSidebarButton();
@@ -29,24 +29,23 @@ class LandingPage {
         }.bind(this));
     }
 
-    createMapAndMarkers(eventLocations) {
-        const locations = eventLocations;
+    createMap() {
         mapboxgl.accessToken = 'pk.eyJ1IjoibXJwb29sZSIsImEiOiJjanRoaGY3N3owdjNvNDNwZHhpZnFuc3pxIn0.xhup6EdfsxVuN8nyKCWhPA';
 
-        const mq = window.matchMedia( "(max-width: 480px)" );
+        const mq = window.matchMedia("(max-width: 480px)");
         let mapZoom = null;
-        if (mq.matches){
-           mapZoom = 1.5;
+        if (mq.matches) {
+            mapZoom = 1.5;
         } else {
-           mapZoom = 3;
+            mapZoom = 3;
         };
 
+        // instantiate map
         this.map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mrpoole/cjtq69hgs1dmu1fr13jv0sze7',
             center: [-81.5, 36],
-            zoom: mapZoom,
-            // minZoom: 10
+            zoom: mapZoom
         });
 
         // add geolocation to the map
@@ -56,7 +55,9 @@ class LandingPage {
             },
             trackUserLocation: true
         }));
+    }
 
+    createMapMarkers(locations) {
         // add markers to map
         locations.forEach(marker => {
             const mark = document.createElement('div');
@@ -64,42 +65,16 @@ class LandingPage {
             mark.style.backgroundImage = 'url(images/marker.png)';
 
             mark.addEventListener('click', () => {
-                $("#widgetCity, #widgetRange, #widgetIcon, #widgetTemp, #widgetTempDesc").empty();
                 $(".fb-share-button, .twitter-share-button, .twitter-share-script").remove();
+                $("#widgetCity, #widgetRange, #widgetIcon, #widgetTemp, #widgetTempDesc").empty();
+                new shareButtons(marker.website);
                 new Weather(marker.latitude, marker.longitude);
+
                 $('.organization').text(marker.organization);
                 $('.website').attr({
                     'href': marker.website,
                     'target': '_blank',
                 }).text('Click here');
-
-                const facebookShareButton = $('<iframe>', {
-                    'src': `https://www.facebook.com/plugins/share_button.php?href=${marker.website}&layout=button&size=small&width=59&height=20&appId&quote=Let's_keep_our_ocean_clean!`,
-                    'class': 'fb-share-button',
-                    'style': 'width: 61px; height: 20px; border: none; overflow: hidden',
-                    'scrolling': 'no',
-                    'frameborder': '0',
-                    'allowTransparency': 'true',
-                    'allow': 'encrypted-media'
-                });
-
-                const twitterShareButton = $('<a>', {
-                    'href': 'https://twitter.com/share?ref_src=twsrc%5Etfw',
-                    'class': 'twitter-share-button',
-                    'data-size': 'small',
-                    'data-text': 'Let\'s keep our ocean clean!',
-                    'data-url': marker.website,
-                    'data-hashtags': 'trashtag',
-                    'data-lang': 'en',
-                    'data-show-count': 'false'
-                }).text('Tweet');
-                const twitterScriptElement = $('<script async>').attr({
-                    'class': 'twitter-share-script',
-                    'src': 'https://platform.twitter.com/widgets.js',
-                    'charset': 'utf-8'
-                });
-
-                $("#shareEvent").append(facebookShareButton, twitterShareButton, twitterScriptElement);
 
                 $('#mapModal').modal({
                     fadeDuration: 100,
