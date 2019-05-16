@@ -11,6 +11,7 @@ class LandingPage {
 
         this.news = new News();
         this.map = null;
+        this.geocoder = null;
         this.events = new BeachCleanup(this.createMapAndMarkers);
 
         this.initializeEventListeners();
@@ -29,6 +30,14 @@ class LandingPage {
         }.bind(this));
     }
 
+    createGeocoderInput(accessToken, mapboxgl) {
+        this.geocoder = new MapboxGeocoder({
+            accessToken: accessToken,
+            mapboxgl: mapboxgl,
+        });
+        document.getElementById('geocoder').appendChild(this.geocoder.onAdd(this.map));
+    }
+
     createMapAndMarkers(eventLocations) {
         const locations = eventLocations;
         mapboxgl.accessToken = 'pk.eyJ1IjoibXJwb29sZSIsImEiOiJjanRoaGY3N3owdjNvNDNwZHhpZnFuc3pxIn0.xhup6EdfsxVuN8nyKCWhPA';
@@ -36,9 +45,9 @@ class LandingPage {
         const mq = window.matchMedia( "(max-width: 480px)" );
         let mapZoom = null;
         if (mq.matches){
-           mapZoom = 1.5;
+            mapZoom = 1.5;
         } else {
-           mapZoom = 3;
+            mapZoom = 3;
         };
 
         this.map = new mapboxgl.Map({
@@ -46,8 +55,10 @@ class LandingPage {
             style: 'mapbox://styles/mrpoole/cjtq69hgs1dmu1fr13jv0sze7',
             center: [-81.5, 36],
             zoom: mapZoom,
-            // minZoom: 10
         });
+
+        this.createGeocoderInput(mapboxgl.accessToken, mapboxgl)
+
 
         // add geolocation to the map
         this.map.addControl(new mapboxgl.GeolocateControl({
