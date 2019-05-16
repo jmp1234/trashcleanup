@@ -71,8 +71,7 @@ class LandingPage {
                 $('.website').attr({
                     'href': marker.website,
                     'target': '_blank',
-                });
-                $('.website').text(marker.website);
+                }).text('Click here');
 
                 const facebookShareButton = $('<iframe>', {
                     'src': `https://www.facebook.com/plugins/share_button.php?href=${marker.website}&layout=button&size=small&width=59&height=20&appId&quote=Let's_keep_our_ocean_clean!`,
