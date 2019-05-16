@@ -1,5 +1,5 @@
 /**
- * Generates news headlines related to ocean pollution
+ * Generates news headlines related to plastic pollution
  * @class
  */
 
@@ -73,4 +73,3 @@ class News {
     }
 
 }
-

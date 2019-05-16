@@ -1,7 +1,7 @@
 /**
- * Generate search for California Clean Up Events
+ * Generate search for worldwide clean up events
  * @class
- * @callback - callback to generate map and markers following loading of events
+ * @callback - callback to generate map markers for event locations
  */
 
 class BeachCleanup {
