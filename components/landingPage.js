@@ -10,13 +10,13 @@ class LandingPage {
 
         this.news = new News();
         this.map = null;
+        this.geocoder = null;
         this.events = new BeachCleanup(this.createMapMarkers);
 
         this.initializeEventListeners();
     }
 
     initializeEventListeners() {
-        this.createMap();
         this.showIntroModal();
         this.toggleSidebar();
         this.addClassToSidebarButton();
@@ -48,6 +48,9 @@ class LandingPage {
             zoom: mapZoom
         });
 
+        this.createGeocoderInput(mapboxgl.accessToken, mapboxgl)
+
+
         // add geolocation to the map
         this.map.addControl(new mapboxgl.GeolocateControl({
             positionOptions: {
@@ -58,6 +61,7 @@ class LandingPage {
     }
 
     createMapMarkers(locations) {
+        this.createMap();
         // add markers to map
         locations.forEach(marker => {
             const mark = document.createElement('div');
@@ -88,6 +92,14 @@ class LandingPage {
         });
     }
 
+    createGeocoderInput(accessToken, mapboxgl) {
+        this.geocoder = new MapboxGeocoder({
+            accessToken: accessToken,
+            mapboxgl: mapboxgl,
+        });
+        document.getElementById('geocoder').appendChild(this.geocoder.onAdd(this.map));
+    }
+
     showIntroModal() {
         $('#introModal').modal({
             fadeDuration: 100,
@@ -106,5 +118,6 @@ class LandingPage {
         $(".button").toggleClass("active");
         $("main").toggleClass("move-to-right");
         $(".sidebar-item").toggleClass("active");
+        $(".geocoder").toggleClass("active");
     }
 }
