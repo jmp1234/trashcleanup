@@ -18,6 +18,7 @@ body {
     font-family: 'Arimo', sans-serif;
 }
 
+
 .aboutBody {
     background-color: rgb(18, 18, 20);
     overflow: auto;
@@ -236,6 +237,15 @@ a:hover {
     width: 100%;
 }
 
+.geocoder {
+    position: absolute;
+    z-index: 1;
+    width: 50%;
+    left: 31%;
+    transform: translateX(-50%);
+    top: 10px;
+}
+
 .marker {
     width: 30px;
     height: 30px;
@@ -381,8 +391,8 @@ main {
 .nav-left {
     display: block;
     position: absolute;
-    left: 22px;
-    top: 12px;
+    left: 12px;
+    top: 0;
 }
 
 .bar {
@@ -424,7 +434,14 @@ main {
 }
 
 .button.active .middle {
-    width: 0;
+    width: 38px;
+    left: 7px;
+    bottom: 1px;
+    -webkit-transform: rotateZ(-180deg);
+    -moz-transform: rotateZ(-180deg);
+    -ms-transform: rotateZ(-180deg);
+    -o-transform: rotateZ(-180deg);
+    transform: rotateZ(-180deg);
 }
 
 .move-to-right {
