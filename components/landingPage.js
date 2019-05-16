@@ -118,6 +118,5 @@ class LandingPage {
         $(".button").toggleClass("active");
         $("main").toggleClass("move-to-right");
         $(".sidebar-item").toggleClass("active");
-        $(".geocoder").toggleClass("active");
     }
 }
