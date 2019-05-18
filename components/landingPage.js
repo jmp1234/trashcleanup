@@ -118,11 +118,18 @@ class LandingPage {
         $(".button").toggleClass("active");
         $("main").toggleClass("move-to-right");
         $(".sidebar-item").toggleClass("active");
+        
         if($('.sidebar').css('width') === '0px') {
           $('.sidebar').addClass('slide-right');
+          $('.nav-left').addClass('arrow-slide-right');
+          $('.geocoder').addClass('geocoder-slide-right');
         } else {
           $('.sidebar').animate({width: '0px'}, 1000);
+          $('.nav-left').animate({left: '12px'}, 1000);
+          $('.geocoder').css({left: '50%'});
+          $('.geocoder').removeClass('geocoder-slide-right');
           $('.sidebar').removeClass('slide-right');
+          $('.nav-left').removeClass('arrow-slide-right');
         }
     }
 }
