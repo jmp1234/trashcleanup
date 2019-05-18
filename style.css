@@ -238,19 +238,12 @@ a:hover {
 }
 
 .geocoder {
-    /* position: absolute;
-    z-index: 1;
-    width: 50%;
-    left: 31%; */
     transform: translateX(-50%);
-    /* top: 10px; */
     position:absolute;
     z-index:1;
-    width:50%;
     left:50%;
     top:20px;
 }
-/* .mapboxgl-ctrl-geocoder { min-width:100%; } */
 
 .marker {
     width: 30px;

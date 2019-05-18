@@ -44,7 +44,7 @@ class LandingPage {
         this.map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mrpoole/cjtq69hgs1dmu1fr13jv0sze7',
-            center: [-81.5, 36],
+            center: [-105, 36],
             zoom: mapZoom
         });
 
@@ -118,7 +118,6 @@ class LandingPage {
         $(".button").toggleClass("active");
         $("main").toggleClass("move-to-right");
         $(".sidebar-item").toggleClass("active");
-        console.log($('.sidebar').css('width'))
         if($('.sidebar').css('width') === '0px') {
           $('.sidebar').addClass('slide-right');
         } else {
