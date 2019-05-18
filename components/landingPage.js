@@ -118,5 +118,12 @@ class LandingPage {
         $(".button").toggleClass("active");
         $("main").toggleClass("move-to-right");
         $(".sidebar-item").toggleClass("active");
+        console.log($('.sidebar').css('width'))
+        if($('.sidebar').css('width') === '0px') {
+          $('.sidebar').addClass('slide-right');
+        } else {
+          $('.sidebar').animate({width: '0px'}, 1000);
+          $('.sidebar').removeClass('slide-right');
+        }
     }
 }
