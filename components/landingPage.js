@@ -44,7 +44,7 @@ class LandingPage {
         this.map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mrpoole/cjtq69hgs1dmu1fr13jv0sze7',
-            center: [-81.5, 36],
+            center: [-105, 36],
             zoom: mapZoom
         });
 
@@ -116,7 +116,19 @@ class LandingPage {
 
     toggleSidebar() {
         $(".button").toggleClass("active");
-        $("main").toggleClass("move-to-right");
         $(".sidebar-item").toggleClass("active");
+        
+        if($('.sidebar').css('width') === '0px') {
+          $('.sidebar').addClass('slide-right');
+          $('.nav-left').addClass('arrow-slide-right');
+          $('.geocoder').addClass('geocoder-slide-right');
+        } else {
+          $('.sidebar').animate({width: '0px'}, 1000);
+          $('.nav-left').animate({left: '12px'}, 1000);
+          $('.geocoder').css({left: '50%'});
+          $('.geocoder').removeClass('geocoder-slide-right');
+          $('.sidebar').removeClass('slide-right');
+          $('.nav-left').removeClass('arrow-slide-right');
+        }
     }
 }
