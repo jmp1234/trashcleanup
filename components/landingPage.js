@@ -116,7 +116,6 @@ class LandingPage {
 
     toggleSidebar() {
         $(".button").toggleClass("active");
-        $("main").toggleClass("move-to-right");
         $(".sidebar-item").toggleClass("active");
         
         if($('.sidebar').css('width') === '0px') {
