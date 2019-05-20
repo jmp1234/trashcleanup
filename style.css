@@ -520,7 +520,7 @@ main {
 .sidebarText {
     color: rgb(255, 255, 255);
     text-decoration: none;
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-transform: none;
     position: relative;
     padding: 10px 20px;
@@ -530,7 +530,7 @@ main {
 }
 
 .sidebarText h1 {
-    font-size: 6rem;
+    font-size: 4rem;
 }
 
 .sidebar-anchor {
