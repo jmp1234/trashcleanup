@@ -363,7 +363,7 @@ main {
     padding: 0 10px;
     background-color: rgb(68, 97, 129);
     background-size: cover;
-    overflow-y: auto;
+    overflow-y: hidden;
     padding: 0;
 }
 
