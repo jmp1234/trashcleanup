@@ -24,7 +24,7 @@ class Weather {
 
     getWeatherData() {
         $.ajax({
-            url: 'http://api.openweathermap.org/data/2.5/weather',
+            url: 'https://api.openweathermap.org/data/2.5/weather',
             dataType: 'json',
             method: 'get',
             data: {
