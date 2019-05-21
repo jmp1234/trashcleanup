@@ -20,7 +20,10 @@ body {
 
 
 .aboutBody {
-    background-color: rgb(18, 18, 20);
+    background: linear-gradient(rgba(155, 198, 255, .3),
+        rgba(0, 255, 242, 0.1), rgba(255, 228, 155, 0.1),
+        rgba(255, 228, 155, 0.1),rgba(255, 123, 0, 0.7),
+        rgba(0, 0, 60, 0.75));
     overflow: auto;
 }
 
@@ -44,11 +47,10 @@ a:hover {
     height: 100%;
     width: 100%;
     font-family: Tahoma, Arial, sans-serif;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
-.title {
-    font-size: 5rem;
+.jumpArrow {
     margin-top: 7%;
     letter-spacing: 0.0625em;
 }
@@ -74,7 +76,7 @@ a:hover {
     font-size: 3rem;
     top: 15px;
     left: 15px;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .jen,
@@ -114,7 +116,6 @@ a:hover {
     margin-top: 1%;
     width: 100%;
     height: 200px;
-    text-align: justify;
     font-weight: 500;
     font-size: 1.2rem;
     font-family: Tahoma, sans-serif;
@@ -134,6 +135,46 @@ a:hover {
 
     border: 3px solid transparent;
     background: linear-gradient(#000, #000) padding-box, radial-gradient(farthest-corner at var(--x) var(--y), #00C9A7, #845EC2) border-box;
+}
+
+.container {
+    margin-bottom: 15px;
+}
+
+#about-accordion {
+    display: none;
+    font-family: Tahoma, sans-serif;
+}
+
+.card {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 3px 7px rgb(0, 0, 0, 0.5);
+}
+
+.card-header:first-child {
+    background-color: rgb(153, 153, 153);
+    border-radius: calc(.65rem - 1px) calc(.65rem - 1px) 0 0;
+    border-bottom: none;
+}
+
+.card .btn {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.btn-link {
+    color: rgb(215, 215, 215);
+
+}
+
+.btn-link:hover {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+.card-body ul {
+    list-style-type: circle;
 }
 
 /* News Headline Ticker */
@@ -1012,8 +1053,7 @@ main {
     }
 }
 
-@media (max-width: 500px) {
-
+@media (max-width: 550px) {
     .geocoder {
         top: 80%;
     }
@@ -1067,6 +1107,15 @@ main {
         height: 50px;
         width: 50px;
     }
+
+    .timeline {
+        display: none;
+    }
+
+    #about-accordion {
+        display: initial;
+    }
+
 }
 
 @media (max-width: 422px) {
