@@ -982,7 +982,7 @@ main {
 
 @media (max-width: 1025px) {
     .teamText {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     .profileimg {
       height: 235px;
@@ -997,7 +997,7 @@ main {
     }
 
     .teamText {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
     .profileimg {
       height: 190px;
@@ -1009,12 +1009,13 @@ main {
 @media (max-width: 768px) {
 
   .profileimg {
-      width: 500px
+      width: 500px;
       margin-bottom: 1.3rem;
   }
 
   .teamText {
     margin-bottom: 4%;
+    font-size: 1.5rem;
   }
 
   .profileimg {
