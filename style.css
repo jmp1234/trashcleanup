@@ -36,16 +36,15 @@ a:hover {
 }
 
 /* About Page */
-
-
-
 .jumpArrow {
-    margin-top: 7%;
+    margin: 10%;
     letter-spacing: 0.0625em;
+    text-align: center;
 }
 
 .fa-chevron-circle-down {
     font-size: 7rem;
+    color: rgb(255, 255, 255);
 }
 
 .aboutBody a {
@@ -57,7 +56,7 @@ a:hover {
     font-size: 3rem;
     top: 15px;
     left: 15px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 .container-fluid {
