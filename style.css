@@ -37,30 +37,12 @@ a:hover {
 
 /* About Page */
 
-.flexContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    font-family: Tahoma, Arial, sans-serif;
-    color: rgb(0, 0, 0);
-}
+
 
 .jumpArrow {
     margin-top: 7%;
     letter-spacing: 0.0625em;
 }
-
-.aboutContainer {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 60%;
-    width: 60%;
-}
-
 
 .fa-chevron-circle-down {
     font-size: 7rem;
@@ -80,6 +62,7 @@ a:hover {
 
 .container-fluid {
   margin-top: 5%;
+  font-family: Tahoma, Arial, sans-serif;
 }
 
 .jen,
@@ -1158,9 +1141,6 @@ main {
       width: 250px;
     }
 
-    .aboutContainer {
-        margin-top: -160px;
-    }
 
     .teamText {
         font-size: 1.3rem;
