@@ -1006,22 +1006,15 @@ main {
 }
 
 @media (max-width: 768px) {
+    .teamText {
+        margin-bottom: 4%;
+        font-size: 1.5rem;
+    }
 
-  .profileimg {
-      width: 500px;
-      margin-bottom: 1.3rem;
-  }
-
-  .teamText {
-    margin-bottom: 4%;
-    font-size: 1.5rem;
-  }
-
-  .profileimg {
-    height: 300px;
-    width: 300px;
-  }
-
+    .profileimg {
+        height: 220px;
+        width: 220px;
+    }
 
     @keyframes slidein {
         from {
@@ -1055,6 +1048,11 @@ main {
 }
 
 @media (max-width: 636px) {
+    .profileimg {
+        height: 300px;
+        width: 300px;
+        margin-bottom: 1.3rem;
+    }
 
     .geocoder-slide-right {
         display: none;
@@ -1131,7 +1129,7 @@ main {
 
 }
 
-@media (max-width: 422px) {
+@media (max-width: 425px) {
     .eventInfoContainer p {
         padding: 0 35px;
     }
@@ -1140,7 +1138,6 @@ main {
       height: 250px;
       width: 250px;
     }
-
 
     .teamText {
         font-size: 1.3rem;
