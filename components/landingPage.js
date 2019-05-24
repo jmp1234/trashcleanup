@@ -117,7 +117,7 @@ class LandingPage {
     toggleSidebar() {
         $(".button").toggleClass("active");
         $(".sidebar-item").toggleClass("active");
-        
+
         if($('.sidebar').css('width') === '0px') {
           $('.sidebar').addClass('slide-right');
           $('.nav-left').addClass('arrow-slide-right');
