@@ -1,4 +1,4 @@
-# We Only Get One Ocean
+# We Only Get One Planet
 
 > 48 hour Hackathon project aimed to combine different data sources into an application
 >
